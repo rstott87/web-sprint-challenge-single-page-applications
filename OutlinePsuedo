@@ -1,5 +1,11 @@
-- [ ] A homepage that has a "/" route and
- links to your form (button, nav bar, or any other type of link 
-is acceptable but must have an id of "order-pizza")
 
-            - Use Route and Link to create? React Router
+
+
+- [ ] Validation for name and the error message is
+ "name must be at least 2 characters" 
+ (Use this exact error message to make sure tests pass) ::: 
+VERY IMPORTANT TO USE THAT EXACT ERROR MESSAGE (casing included!)
+
+    - write a yup "schema?"
+    - set all form values to state?
+    
