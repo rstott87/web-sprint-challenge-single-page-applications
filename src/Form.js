@@ -1,6 +1,7 @@
-import {axios} from 'axios';
+import axios from 'axios';
 import * as yup from 'yup';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+
 
 const formSchema = yup.object().shape({
     name: yup.string()
@@ -15,9 +16,9 @@ const formSchema = yup.object().shape({
 });
 
 
-
 export default function Form (props) {
     
+    const [post, setPost] = useState([]);
     const [formState, setFormState] = useState({
         name: "",
         size: "",
@@ -27,7 +28,6 @@ export default function Form (props) {
         vegetable: true,
         instructions: "",
     });
-
     const [errors, setErrors] = useState({
         name: "",
         size: "",
@@ -37,7 +37,6 @@ export default function Form (props) {
         vegetable: "",
         instructions: "",
     });
-
     const [disabled, setDisabled] = useState(true)
 
     const setFormErrors = (name, value) => {
@@ -52,10 +51,36 @@ export default function Form (props) {
         setFormState({...formState, [name]: valueToUse })
       }
 
+      useEffect(()=>{
+        formSchema.isValid(formState).then(valid=> setDisabled(!valid))
+      }, [formState])  
+
+      const submit = event => {
+          event.preventDefault()
+          const order = { Customer: formState.name.trim(), 
+            size: formState.size,
+            pepperoni: formState.pepperoni,
+            bacon: formState.bacon,
+            pineapple: formState.pineapple ,
+            vegetable: formState.vegetable,
+            instructions: formState.instructions.trim(),
+            }
+
+            console.log(order)
+
+            axios.post('https://reqres.in/api/orders', order)
+            .then(res=>{
+                setPost(res.data);
+                console.log("succes", res.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+      }
     return (
     <>
         <h3>Pizza Form</h3>
-        <form id = "pizza-form">
+        <form onSubmit={submit} id = "pizza-form">
             <label>
                 <div>{errors.name}</div>
                 Name:
