@@ -1,9 +1,20 @@
 import {axios} from 'axios';
 import * as yup from 'yup';
+import { useState } from 'react'
+
+const formSchema = yup.object().shape({
+    name: yup.string()
+        .required('name is required')
+        .min(2, 'Name is too short')
+});
 
 
 
 export default function Form (props) {
+    const [errors, setErrors] = useState({
+
+    });
+    
     return (
     <>
         <h3>Pizza Form</h3>
