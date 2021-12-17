@@ -86,7 +86,7 @@ export default function Form (props) {
                 Name:
                 <input name= "name" onChange={change} 
                 type="text"
-                 value={formState.name} 
+                value={formState.name} 
                 id="name-input">
                 </input>
             </label> <br/>
