@@ -13,10 +13,10 @@ const App = () => {
         <Link to="/pizza">
           <div id="order-pizza">Order Pizza</div>
         </Link>
-        <Route path ="/pizza">
+      </nav>
+      <Route path ="/pizza">
           <Form></Form>
         </Route>
-      </nav>
 
       <Route exact path="/">
       </Route>
