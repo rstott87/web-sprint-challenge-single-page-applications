@@ -5,7 +5,7 @@ import { useState } from 'react'
 const formSchema = yup.object().shape({
     name: yup.string()
         .required('name is required')
-        .min(2, 'Name is too short'),
+        .min(2, 'name must be at least 2 characters'),
     size: yup.string().required('name is required').min(2, 'Name is too short'),
     pepperoni: yup.boolean(),
     bacon: yup.boolean(),
@@ -57,6 +57,7 @@ export default function Form (props) {
         <h3>Pizza Form</h3>
         <form id = "pizza-form">
             <label>
+                <div>{errors.name}</div>
                 Name:
                 <input name= "name" onChange={change} 
                 type="text"

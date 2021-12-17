@@ -8,10 +8,10 @@ const App = () => {
       <nav> 
       <h1>Lambda Eats</h1>
         <Link to="/">
-          <div className="home">Home</div>
+          <div id="home">Home</div>
         </Link>
         <Link to="/pizza">
-          <div className="order-pizza">Order Pizza</div>
+          <div id="order-pizza">Order Pizza</div>
         </Link>
         <Route path ="/pizza">
           <Form></Form>
